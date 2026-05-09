@@ -1,0 +1,1387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Muhammad Aryan — Cybersecurity Specialist</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Exo+2:wght@300;400;600;800;900&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #00d4ff;
+    --green: #00ff88;
+    --dark: #030810;
+    --panel: #060f1e;
+    --panel2: #0a1628;
+    --border: rgba(0,212,255,0.15);
+    --border-g: rgba(0,255,136,0.15);
+    --text: #c8d8e8;
+    --dim: #5a7a9a;
+    --glow-b: 0 0 20px rgba(0,212,255,0.4), 0 0 60px rgba(0,212,255,0.15);
+    --glow-g: 0 0 20px rgba(0,255,136,0.4), 0 0 60px rgba(0,255,136,0.15);
+  }
+
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--dark);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif;
+    overflow-x: hidden;
+    cursor: crosshair;
+  }
+
+  /* ── SCANLINE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.07) 2px, rgba(0,0,0,0.07) 4px);
+    pointer-events: none;
+    z-index: 999;
+  }
+
+  /* ── GRID BG ── */
+  .grid-bg {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(0,212,255,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,212,255,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; width: 100%; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(3,8,16,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.1rem;
+    font-weight: 900;
+    color: var(--blue);
+    text-shadow: var(--glow-b);
+    letter-spacing: 3px;
+  }
+
+  .logo span { color: var(--green); }
+
+  nav ul {
+    list-style: none;
+    display: flex; gap: 36px;
+  }
+
+  nav a {
+    font-family: 'Share Tech Mono', monospace;
+    color: var(--dim);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: color 0.3s, text-shadow 0.3s;
+  }
+
+  nav a:hover { color: var(--blue); text-shadow: var(--glow-b); }
+
+  /* ── SECTIONS ── */
+  section { position: relative; z-index: 1; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 120px 48px 80px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: pulse 6s ease-in-out infinite alternate;
+  }
+  .hero-orb-1 { width: 500px; height: 500px; background: rgba(0,212,255,0.08); top: -100px; left: -150px; }
+  .hero-orb-2 { width: 400px; height: 400px; background: rgba(0,255,136,0.07); bottom: -80px; right: -100px; animation-delay: -3s; }
+
+  @keyframes pulse { from { transform: scale(1); } to { transform: scale(1.2); } }
+
+  .hero-content { position: relative; z-index: 2; max-width: 900px; }
+
+  .hero-tag {
+    display: inline-block;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 4px;
+    color: var(--green);
+    border: 1px solid var(--green);
+    padding: 6px 18px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
+    animation: fadeDown 0.8s ease both;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(2.2rem, 6vw, 5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -1px;
+    margin-bottom: 28px;
+    animation: fadeDown 0.8s 0.2s ease both;
+  }
+
+  .hero-title .line1 { color: #fff; display: block; }
+  .hero-title .line2 {
+    display: block;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-sub {
+    font-size: 1.05rem;
+    color: var(--dim);
+    max-width: 600px; margin: 0 auto 44px;
+    line-height: 1.7;
+    animation: fadeDown 0.8s 0.4s ease both;
+  }
+
+  .hero-sub strong { color: var(--blue); font-weight: 600; }
+
+  .hero-btns {
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+    animation: fadeDown 0.8s 0.6s ease both;
+  }
+
+  .btn-primary {
+    padding: 14px 36px;
+    background: linear-gradient(135deg, var(--blue), #0088cc);
+    color: #000;
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  }
+
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: var(--glow-b); }
+
+  .btn-outline {
+    padding: 14px 36px;
+    background: transparent;
+    color: var(--green);
+    font-family: 'Orbitron', monospace;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-decoration: none;
+    border: 1px solid var(--green);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
+    clip-path: polygon(12px 0%, 100% 0%, calc(100% - 12px) 100%, 0% 100%);
+  }
+
+  .btn-outline:hover { background: rgba(0,255,136,0.1); transform: translateY(-3px); box-shadow: var(--glow-g); }
+
+  .scroll-indicator {
+    position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.65rem;
+    color: var(--dim); letter-spacing: 3px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+
+  .scroll-line { width: 1px; height: 40px; background: linear-gradient(var(--blue), transparent); }
+
+  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+  @keyframes fadeDown { from{opacity:0;transform:translateY(-24px);} to{opacity:1;transform:translateY(0);} }
+
+  /* ── SECTION HEADER ── */
+  .section-header { text-align: center; margin-bottom: 64px; }
+
+  .section-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    color: var(--green);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Orbitron', monospace;
+    font-size: clamp(1.6rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+  }
+
+  .section-title span { color: var(--blue); }
+
+  .section-line {
+    width: 80px; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    margin: 20px auto 0;
+    position: relative;
+  }
+
+  .section-line::before {
+    content:''; position:absolute; left: -20px; top: -3px;
+    width: 8px; height: 8px;
+    border: 1px solid var(--blue);
+    transform: rotate(45deg);
+  }
+
+  /* ── EXPERTISE ── */
+  #expertise { padding: 100px 48px; }
+
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .expertise-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s, border-color 0.4s, box-shadow 0.4s;
+    cursor: default;
+  }
+
+  .expertise-card::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    transform: translateX(-100%);
+    transition: transform 0.6s;
+  }
+
+  .expertise-card:hover::before { transform: translateX(100%); }
+  .expertise-card:hover { transform: translateY(-6px); border-color: rgba(0,212,255,0.4); box-shadow: var(--glow-b); }
+
+  .expertise-card.green-card:hover { border-color: rgba(0,255,136,0.4); box-shadow: var(--glow-g); }
+  .expertise-card.green-card::before { background: linear-gradient(90deg, transparent, var(--green), transparent); }
+
+  .card-icon {
+    width: 64px; height: 64px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    font-size: 1.8rem;
+    background: rgba(0,212,255,0.05);
+    position: relative;
+    overflow: visible;
+  }
+
+  /* When you drop an image inside .card-icon it auto-fits */
+  .card-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 8px;
+    display: block;
+  }
+
+  .card-icon.g { background: rgba(0,255,136,0.05); border-color: var(--border-g); }
+
+  .card-number {
+    position: absolute; top: -10px; right: -10px;
+    font-family: 'Orbitron', monospace; font-size: 0.6rem;
+    color: var(--blue); background: var(--dark);
+    padding: 2px 5px; border: 1px solid var(--blue);
+  }
+
+  .card-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.95rem; font-weight: 700;
+    color: #fff; margin-bottom: 14px;
+    letter-spacing: 1px;
+  }
+
+  .card-desc {
+    font-size: 0.88rem; color: var(--dim);
+    line-height: 1.75; margin-bottom: 20px;
+  }
+
+  .card-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+  .tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 1px;
+    padding: 4px 10px;
+    border: 1px solid rgba(0,212,255,0.25);
+    color: var(--blue);
+    background: rgba(0,212,255,0.05);
+  }
+
+  .tag.g { border-color: rgba(0,255,136,0.25); color: var(--green); background: rgba(0,255,136,0.05); }
+
+  /* ── PROJECTS ── */
+  #projects { padding: 100px 48px; background: var(--panel); }
+
+  .filter-bar {
+    display: flex; gap: 12px; justify-content: center;
+    flex-wrap: wrap; margin-bottom: 48px;
+  }
+
+  .filter-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.7rem; letter-spacing: 2px;
+    padding: 8px 22px;
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--dim);
+    cursor: pointer;
+    transition: all 0.3s;
+    text-transform: uppercase;
+  }
+
+  .filter-btn.active, .filter-btn:hover {
+    border-color: var(--blue); color: var(--blue);
+    background: rgba(0,212,255,0.08);
+    box-shadow: 0 0 12px rgba(0,212,255,0.2);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1100px; margin: 0 auto;
+  }
+
+  .project-card {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: transform 0.4s, box-shadow 0.4s;
+    position: relative;
+  }
+
+  .project-card:hover { transform: translateY(-4px); box-shadow: var(--glow-b); }
+  .project-card.hidden { display: none; }
+
+  .project-thumb {
+    height: 160px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 3rem;
+    position: relative; overflow: hidden;
+  }
+
+  /* When you drop an image inside .project-thumb it auto-fills */
+  .project-thumb img {
+    max-width: 75%;
+    max-height: 75%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    position: relative;
+    z-index: 1;
+    filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+}
+
+  /* Emoji/text stays above image */
+  .project-thumb span,
+  .project-thumb > *:not(img) {
+    position: relative;
+    z-index: 1;
+  }
+
+  .project-thumb::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, var(--dark));
+    z-index: 1;
+  }
+
+  .p-web { background: linear-gradient(135deg, #001428, #00304a); }
+  .p-sec { background: linear-gradient(135deg, #0a0014, #200030); }
+  .p-soc { background: linear-gradient(135deg, #001a08, #003018); }
+
+  .project-body { padding: 20px 22px; }
+
+  .project-cat {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem; letter-spacing: 3px;
+    color: var(--green); text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .project-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem; font-weight: 700;
+    color: #fff; margin-bottom: 10px;
+  }
+
+  .project-desc { font-size: 0.82rem; color: var(--dim); line-height: 1.6; }
+
+  .project-footer {
+    padding: 12px 22px;
+    border-top: 1px solid var(--border);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+
+  .project-link {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 2px;
+    color: var(--blue); text-decoration: none;
+    text-transform: uppercase;
+    transition: text-shadow 0.3s;
+  }
+
+  .project-link:hover { text-shadow: var(--glow-b); }
+
+  .project-status {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem; color: var(--green);
+    display: flex; align-items: center; gap: 5px;
+  }
+
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); animation: blink 1.5s infinite; }
+  @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.2;} }
+
+  /* ── CREATOR HUB ── */
+  #creator { padding: 100px 48px; }
+
+  .creator-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+    gap: 24px;
+    max-width: 900px; margin: 0 auto;
+  }
+
+  .creator-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .creator-card:hover { transform: translateY(-4px); box-shadow: var(--glow-b); }
+
+  .creator-platform {
+    display: flex; align-items: center; gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .platform-icon {
+    width: 44px; height: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    border: 1px solid var(--border);
+    background: rgba(0,212,255,0.05);
+  }
+
+  .platform-name {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.85rem; font-weight: 700; color: #fff;
+  }
+
+  .platform-sub { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; color: var(--dim); }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(3,1fr);
+    gap: 12px; margin-bottom: 20px;
+  }
+
+  .stat-box {
+    text-align: center; padding: 12px 8px;
+    background: var(--dark); border: 1px solid var(--border);
+  }
+
+  .stat-val {
+    font-family: 'Orbitron', monospace;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--blue); display: block;
+  }
+
+  .stat-lbl { font-family: 'Share Tech Mono', monospace; font-size: 0.58rem; color: var(--dim); letter-spacing: 1px; }
+
+  .creator-focus { font-size: 0.85rem; color: var(--dim); line-height: 1.7; }
+  .creator-focus strong { color: var(--green); }
+
+  /* ── SKILLS ── */
+  #skills { padding: 100px 48px; background: var(--panel); }
+
+  .skills-cloud {
+    max-width: 900px; margin: 0 auto;
+    display: flex; flex-wrap: wrap;
+    gap: 12px; justify-content: center;
+  }
+
+  .skill-pill {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.75rem; letter-spacing: 2px;
+    padding: 10px 20px;
+    border: 1px solid var(--border);
+    color: var(--dim);
+    background: var(--dark);
+    transition: all 0.3s;
+    cursor: default;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .skill-pill::before {
+    content: '';
+    position: absolute; left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: linear-gradient(90deg, var(--blue), var(--green));
+    transition: width 0.4s;
+  }
+
+  .skill-pill:hover::before { width: 100%; }
+  .skill-pill:hover { color: var(--blue); border-color: rgba(0,212,255,0.4); }
+
+  .skill-pill.featured {
+    color: var(--blue); border-color: rgba(0,212,255,0.3);
+    background: rgba(0,212,255,0.05);
+    font-weight: bold;
+  }
+
+  .skill-pill.featured.g {
+    color: var(--green); border-color: rgba(0,255,136,0.3);
+    background: rgba(0,255,136,0.05);
+  }
+
+  /* ── CONTACT ── */
+  #contact { padding: 100px 48px; }
+
+  .contact-wrapper {
+    max-width: 700px; margin: 0 auto;
+  }
+
+  .contact-form {
+    background: var(--panel); border: 1px solid var(--border);
+    padding: 48px; position: relative;
+  }
+
+  .contact-form::before {
+    content: 'SECURE_CHANNEL';
+    position: absolute; top: -10px; left: 24px;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.65rem;
+    color: var(--green); background: var(--panel); padding: 0 8px;
+    letter-spacing: 3px;
+  }
+
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  .form-group { margin-bottom: 20px; }
+
+  .form-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem; letter-spacing: 2px;
+    color: var(--dim); text-transform: uppercase;
+    display: block; margin-bottom: 8px;
+  }
+
+  .form-input, .form-textarea {
+    width: 100%; padding: 12px 16px;
+    background: var(--dark); border: 1px solid var(--border);
+    color: var(--text); font-family: 'Exo 2', sans-serif; font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+
+  .form-input:focus, .form-textarea:focus {
+    border-color: var(--blue);
+    box-shadow: 0 0 0 2px rgba(0,212,255,0.1);
+  }
+
+  .form-textarea { resize: vertical; min-height: 120px; }
+
+  .form-submit {
+    width: 100%; padding: 16px;
+    background: linear-gradient(135deg, var(--blue), #006699);
+    color: #000; font-family: 'Orbitron', monospace;
+    font-size: 0.8rem; font-weight: 700; letter-spacing: 3px;
+    border: none; cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    margin-top: 8px;
+  }
+
+  .form-submit:hover { transform: translateY(-2px); box-shadow: var(--glow-b); }
+
+  .social-row {
+    display: flex; gap: 12px; justify-content: center;
+    margin-top: 36px; flex-wrap: wrap;
+  }
+
+  .social-btn {
+    width: 48px; height: 48px;
+    display: flex; align-items: center; justify-content: center;
+    border: 1px solid var(--border); background: var(--panel);
+    color: var(--dim); text-decoration: none; font-size: 1.1rem;
+    transition: all 0.3s;
+  }
+
+  .social-btn:hover {
+    border-color: var(--blue); color: var(--blue);
+    background: rgba(0,212,255,0.08);
+    box-shadow: var(--glow-b);
+    transform: translateY(-3px);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 28px 48px;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: 'Share Tech Mono', monospace; font-size: 0.68rem;
+    color: var(--dim); flex-wrap: wrap; gap: 12px;
+    position: relative; z-index: 1;
+  }
+
+  footer span { color: var(--blue); }
+
+  /* ── TERMINAL CURSOR ── */
+  .cursor-blink::after {
+    content: '▋';
+    animation: blink 1s step-end infinite;
+    color: var(--blue);
+  }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal {
+    opacity: 0; transform: translateY(30px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    nav ul { display: none; }
+    #hero, #expertise, #projects, #creator, #skills, #contact { padding-left: 20px; padding-right: 20px; }
+    #about { padding-left: 20px !important; padding-right: 20px !important; }
+    .form-row { grid-template-columns: 1fr; }
+    .contact-form { padding: 28px 20px; }
+    footer { flex-direction: column; text-align: center; }
+    .about-grid { grid-template-columns: 1fr !important; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-btns { flex-direction: column; align-items: center; }
+    .stats-row { grid-template-columns: repeat(3,1fr); }
+  }
+</style>
+</head>
+<body>
+<div class="grid-bg"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">M<span>.</span>ARYAN</div>
+  <ul>
+    <li><a href="#about">About</a></li>
+    <li><a href="#expertise">Expertise</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#creator">Creator</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb hero-orb-1"></div>
+  <div class="hero-orb hero-orb-2"></div>
+  <div class="hero-content">
+    <div class="hero-tag">// Muhammad Aryan — Tank, KPK, Pakistan</div>
+    <h1 class="hero-title">
+      <span class="line1">Cybersecurity Specialist</span>
+      <span class="line2">&amp; Digital Architect</span>
+    </h1>
+    <p class="hero-sub">
+      BS Cybersecurity student from <strong>Tank, KPK</strong> — bridging the gap between <strong>ethical hacking</strong>, web development, and AI-powered digital experiences. Building secure systems from the ground up.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-primary">View Projects</a>
+      <a href="#contact" class="btn-outline">Get In Touch</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    SCROLL
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="padding:100px 48px; background:var(--panel);">
+  <div class="section-header reveal">
+    <span class="section-tag">// Profile</span>
+    <h2 class="section-title">About <span>Me</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:start;" class="about-grid">
+
+    <!-- Bio Card -->
+    <div class="expertise-card reveal" style="height:100%;">
+      <div style="display:flex;align-items:center;gap:20px;margin-bottom:28px;">
+        <!-- Profile Photo -->
+        <div style="flex-shrink:0;width:90px;height:90px;border-radius:50%;border:2px solid var(--blue);overflow:hidden;box-shadow:0 0 20px rgba(0,212,255,0.3);background:rgba(0,212,255,0.06);">
+          <img src="your-photo.jpg" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;">
+        </div>
+        <div>
+          <div style="font-family:'Orbitron',monospace;font-size:1.05rem;font-weight:900;color:#fff;letter-spacing:2px;">MUHAMMAD ARYAN</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--green);letter-spacing:2px;margin-top:4px;">Cybersecurity Student &amp; Developer</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;color:var(--dim);margin-top:4px;">📍 Tank, KPK, Pakistan</div>
+        </div>
+      </div>
+      <p class="card-desc" style="margin-bottom:20px;">
+        I'm a passionate cybersecurity student from Tank, KPK, currently pursuing my <strong style="color:var(--blue);">BS in Cybersecurity</strong>. My journey started with a curiosity for how systems work — and how they break. I combine ethical hacking skills with web development and AI automation to build secure, modern digital solutions.
+      </p>
+      <p class="card-desc">
+        From the classrooms of <strong style="color:var(--green);">Tank</strong> to advanced cybersecurity labs, I am committed to protecting the digital world — one system at a time.
+      </p>
+    </div>
+
+    <!-- Education Timeline -->
+    <div class="expertise-card reveal" style="height:100%;">
+      <div style="font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:#fff;letter-spacing:2px;margin-bottom:28px;">🎓 EDUCATION TIMELINE</div>
+
+      <div style="position:relative;padding-left:24px;border-left:1px solid var(--border);">
+
+        <!-- Entry 1 -->
+        <div style="margin-bottom:32px;position:relative;">
+          <div style="position:absolute;left:-29px;top:4px;width:10px;height:10px;border:2px solid var(--blue);background:var(--dark);transform:rotate(45deg);"></div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--green);letter-spacing:3px;margin-bottom:6px;">MATRIC — COMPLETED</div>
+          <div style="font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:6px;">Oriental Science School</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim);">Tank, KPK · Science</div>
+        </div>
+
+        <!-- Entry 2 -->
+        <div style="margin-bottom:32px;position:relative;">
+          <div style="position:absolute;left:-29px;top:4px;width:10px;height:10px;border:2px solid var(--blue);background:var(--dark);transform:rotate(45deg);"></div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--green);letter-spacing:3px;margin-bottom:6px;">FSc PRE-ENGINEERING — COMPLETED</div>
+          <div style="font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:6px;">Govt. Degree College No.1</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim);">Dera Ismail Khan, KPK · Pre-Engineering</div>
+        </div>
+
+        <!-- Entry 3 — Active -->
+        <div style="position:relative;">
+          <div style="position:absolute;left:-29px;top:4px;width:10px;height:10px;border:2px solid var(--green);background:var(--green);transform:rotate(45deg);animation:blink 1.5s infinite;"></div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--blue);letter-spacing:3px;margin-bottom:6px;">BS CYBERSECURITY — IN PROGRESS</div>
+          <div style="font-family:'Orbitron',monospace;font-size:0.85rem;font-weight:700;color:#fff;margin-bottom:6px;">University — Current</div>
+          <div style="font-family:'Share Tech Mono',monospace;font-size:0.68rem;color:var(--dim);">KPK, Pakistan · Cybersecurity</div>
+          <div style="margin-top:10px;display:inline-flex;align-items:center;gap:6px;font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--green);border:1px solid var(--green);padding:4px 12px;background:rgba(0,255,136,0.06);">
+            <span class="dot"></span> ACTIVELY STUDYING
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERTISE -->
+<section id="expertise">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 01</span>
+    <h2 class="section-title">Core <span>Expertise</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="expertise-grid">
+    <div class="expertise-card reveal">
+      <div class="card-icon">
+  <img src="A_premium__high-resolution_3D_render_202605082050-removebg-preview.png" alt="Cybersecurity">
+  <span class="card-number">01</span>
+</div>
+      <div class="card-title">Cybersecurity & Ethical Hacking</div>
+      <p class="card-desc">Advanced penetration testing and network auditing using industry-standard tools. Identifying and neutralizing vulnerabilities before adversaries exploit them.</p>
+      <div class="card-tags">
+        <span class="tag">Kali Linux</span>
+        <span class="tag">Nmap</span>
+        <span class="tag">Pentesting</span>
+        <span class="tag">Network Audit</span>
+        <span class="tag">Tor</span>
+      </div>
+    </div>
+    <div class="expertise-card green-card reveal">
+      <div class="card-icon">
+  <img src="Translucent_glass_globe_wireframe_202605082050-removebg-preview.png" alt="Cybersecurity">
+  <span class="card-number">02</span>
+</div>
+      <div class="card-title">Web Development</div>
+      <p class="card-desc">Crafting high-performance, responsive websites with custom branding and identity systems. Pixel-perfect design married to clean, maintainable code.</p>
+      <div class="card-tags">
+        <span class="tag g">HTML5</span>
+        <span class="tag g">CSS3</span>
+        <span class="tag g">Responsive</span>
+        <span class="tag g">Branding</span>
+        <span class="tag g">UI/UX</span>
+      </div>
+    </div>
+    <div class="expertise-card reveal">
+      <div class="card-icon">
+  <img src="Robot_head_icon_glossy_finish_202605082050-removebg-preview.png" alt="Cybersecurity">
+  <span class="card-number">03</span>
+</div>
+      <div class="card-title">AI & Automation</div>
+      <p class="card-desc">Leveraging Python and machine learning to automate complex workflows. From Excel/VBA macros to full ML pipelines — turning data into intelligent action.</p>
+      <div class="card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Machine Learning</span>
+        <span class="tag">Excel VBA</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 02</span>
+    <h2 class="section-title">Project <span>Showcase</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="filter-bar reveal">
+    <button class="filter-btn active" onclick="filterProjects('all', this)">All Projects</button>
+    <button class="filter-btn" onclick="filterProjects('web', this)">Web Sites</button>
+    <button class="filter-btn" onclick="filterProjects('security', this)">Security Tools</button>
+    <button class="filter-btn" onclick="filterProjects('social', this)">Social Media</button>
+  </div>
+  <div class="projects-grid">
+
+    <div class="project-card" data-cat="web">
+      <div class="project-thumb p-web">
+  <img src="3D_crane_lifting_shipping_crate_202605082050-removebg-preview (1).png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Web Sites</div>
+        <div class="project-name">E-Commerce Storefront</div>
+        <p class="project-desc">Full custom branding with mobile-first responsive layout and checkout UX optimization.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Live</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="security">
+      <div class="project-thumb p-web">
+  <img src="A_premium__high-resolution_3D_render_202605082055-removebg-preview.png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Security Tools</div>
+        <div class="project-name">Network Recon Suite</div>
+        <p class="project-desc">Automated Nmap scanning & reporting tool built with Python for rapid network auditing.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Active</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="social">
+      <div class="project-thumb p-web">
+  <img src="3D_bar_chart_rising_columns_202605082056-removebg-preview.png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Social Media Strategy</div>
+        <div class="project-name">Viral Growth Campaign</div>
+        <p class="project-desc">Multi-platform content strategy achieving 300% audience growth in 60 days using trend analysis.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Live</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="web">
+      <div class="project-thumb p-web">
+  <img src="Wooden_artist_paint_palette_202605082056-removebg-preview.png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Web Sites</div>
+        <div class="project-name">Brand Identity Portal</div>
+        <p class="project-desc">Portfolio site with animated dark-tech aesthetics and custom CSS animations for a cybersecurity firm.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Live</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="security">
+      <div class="project-thumb p-web">
+  <img src="Detective_holding_magnifying_glass_202605082059-removebg-preview.png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Security Tools</div>
+        <div class="project-name">APK Analysis Toolkit</div>
+        <p class="project-desc">Smali/APK decompiling workflow for mobile app vulnerability assessment and reverse engineering.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Active</span>
+      </div>
+    </div>
+
+    <div class="project-card" data-cat="social">
+      <div class="project-thumb p-web">
+  <img src="ai.co.png" alt="Project Name">
+</div>
+      <div class="project-body">
+        <div class="project-cat">Social Media Strategy</div>
+        <div class="project-name">AI Content Pipeline</div>
+        <p class="project-desc">Python-automated content generation and scheduling system for cross-platform publishing.</p>
+      </div>
+      <div class="project-footer">
+        <a href="#" class="project-link">View →</a>
+        <span class="project-status"><span class="dot"></span>Active</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CREATOR HUB -->
+<section id="creator">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 03</span>
+    <h2 class="section-title">Content Creator <span>Hub</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="creator-grid">
+
+    <div class="creator-card reveal">
+      <div class="creator-platform">
+        <div class="platform-icon"><img src="youtube.png" alt="Youtube Icon"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+        <div>
+          <div class="platform-name">YouTube Channel</div>
+          <div class="platform-sub">@TechArchitect</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><span class="stat-val">48K</span><span class="stat-lbl">Subscribers</span></div>
+        <div class="stat-box"><span class="stat-val">2.1M</span><span class="stat-lbl">Views</span></div>
+        <div class="stat-box"><span class="stat-val">94%</span><span class="stat-lbl">Retention</span></div>
+      </div>
+      <p class="creator-focus">Deep-dive tutorials on <strong>ethical hacking</strong>, Python scripting, and AI tools. Focused on demystifying complex tech for the next generation of digital specialists.</p>
+    </div>
+
+    <div class="creator-card reveal">
+      <div class="creator-platform">
+        <div class="platform-icon"><img src="tiktok.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></div>
+        <div>
+          <div class="platform-name">TikTok</div>
+          <div class="platform-sub">@DigitalArchitect</div>
+        </div>
+      </div>
+      <div class="stats-row">
+        <div class="stat-box"><span class="stat-val">120K</span><span class="stat-lbl">Followers</span></div>
+        <div class="stat-box"><span class="stat-val">8.4M</span><span class="stat-lbl">Likes</span></div>
+        <div class="stat-box"><span class="stat-val">12%</span><span class="stat-lbl">Eng. Rate</span></div>
+      </div>
+      <p class="creator-focus">Viral short-form content covering <strong>AI trends</strong>, cybersecurity awareness, and digital lifestyle. Turning complex topics into engaging 60-second stories.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 04</span>
+    <h2 class="section-title">Technical <span>Arsenal</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-cloud reveal">
+    <span class="skill-pill featured">HTML5</span>
+    <span class="skill-pill featured">CSS3</span>
+    <span class="skill-pill featured g">Python</span>
+    <span class="skill-pill">JavaScript</span>
+    <span class="skill-pill featured">Kali Linux</span>
+    <span class="skill-pill featured g">Nmap</span>
+    <span class="skill-pill">Tor Network</span>
+    <span class="skill-pill featured">Penetration Testing</span>
+    <span class="skill-pill">Smali / APK Modding</span>
+    <span class="skill-pill featured g">Machine Learning</span>
+    <span class="skill-pill">Microsoft VBA</span>
+    <span class="skill-pill featured">Excel Automation</span>
+    <span class="skill-pill">Network Auditing</span>
+    <span class="skill-pill">Bash Scripting</span>
+    <span class="skill-pill featured g">UI/UX Design</span>
+    <span class="skill-pill">Git / GitHub</span>
+    <span class="skill-pill">Wireshark</span>
+    <span class="skill-pill featured">SEO Strategy</span>
+    <span class="skill-pill">Content Creation</span>
+    <span class="skill-pill">Video Editing</span>
+    <span class="skill-pill featured g">Data Analysis</span>
+    <span class="skill-pill">Metasploit</span>
+    <span class="skill-pill">Burp Suite</span>
+    <span class="skill-pill featured">Responsive Design</span>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 05</span>
+    <h2 class="section-title">Open <span>Channel</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="contact-wrapper">
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-input" placeholder="Your Name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <input type="text" class="form-input" placeholder="Project inquiry, collaboration...">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Describe your project or idea..."></textarea>
+      </div>
+      <button class="form-submit">TRANSMIT MESSAGE ▶</button>
+    </div>
+
+    <div class="social-row">
+      <a href="#" class="social-btn" title="GitHub"><img src="github.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="#" class="social-btn" title="LinkedIn"><img src="linkedin.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="#" class="social-btn" title="Twitter/X"><img src="twitter.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="#" class="social-btn" title="YouTube"><img src="youtube.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="#" class="social-btn" title="TikTok"><img src="tiktok.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="https://www.instagram.com/m.aryan_804?igsh=MjJrejBrdnljN3Yw" target="_blank" class="social-btn" title="Instagram"><img src="instagram.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="#" class="social-btn" title="Telegram"><img src="telegram.png" alt="Muhammad Aryan"
+               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>© 2025 <span>Muhammad Aryan</span> — Tank, KPK, Pakistan</div>
+  <div style="font-family:'Share Tech Mono',monospace;font-size:0.65rem;">
+    <span style="color:var(--green)">●</span> ALL SYSTEMS OPERATIONAL
+  </div>
+  <div>Built with <span>precision</span> & code</div>
+</footer>
+
+<script>
+  // Filter projects
+  function filterProjects(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.project-card').forEach(card => {
+      if (cat === 'all' || card.dataset.cat === cat) {
+        card.classList.remove('hidden');
+        card.style.animation = 'none';
+        requestAnimationFrame(() => { card.style.animation = ''; });
+      } else {
+        card.classList.add('hidden');
+      }
+    });
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Stagger cards
+  document.querySelectorAll('.expertise-card, .project-card, .creator-card').forEach((el, i) => {
+    el.style.transitionDelay = `${(i % 3) * 0.1}s`;
+  });
+</script>
+
+<!-- SKULL CAM — TOP RIGHT -->
+<style>
+  #skullWrap {
+    position: fixed;
+    top: 72px; right: 18px;
+    width: 130px; height: 150px;
+    z-index: 9999;
+    pointer-events: none;
+    user-select: none;
+    animation: skullFloat 4s ease-in-out infinite;
+  }
+  @keyframes skullFloat {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-10px); }
+  }
+
+  #skullBubble {
+    position: fixed;
+    top: 230px; right: 18px;
+    background: #060f1e;
+    border: 1px solid #00d4ff;
+    border-radius: 8px 8px 0 8px;
+    padding: 6px 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.6rem;
+    color: #00ff88;
+    white-space: nowrap;
+    opacity: 0;
+    transform: scale(0.85) translateY(-4px);
+    transform-origin: top right;
+    transition: opacity 0.22s, transform 0.22s;
+    box-shadow: 0 0 14px rgba(0,212,255,0.4);
+    z-index: 9999;
+    pointer-events: none;
+  }
+  #skullBubble.show { opacity:1; transform:scale(1) translateY(0); }
+  #skullBubble::after {
+    content:''; position:absolute;
+    top:-8px; right:14px;
+    border:8px solid transparent;
+    border-bottom-color:#00d4ff; border-top:none;
+  }
+  .sk-dot {
+    display:inline-block; width:5px; height:5px;
+    border-radius:50%; background:#ff2244;
+    box-shadow:0 0 5px #ff2244;
+    margin-right:5px; vertical-align:middle;
+    animation: rb2 1.1s step-end infinite;
+  }
+  @keyframes rb2 { 0%,49%{opacity:1} 50%,100%{opacity:0} }
+</style>
+
+<div id="skullWrap">
+  <svg id="skullSVG" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 130 150" width="130" height="150">
+    <defs>
+      <!-- Skull body gradient: dark bone -->
+      <radialGradient id="skG" cx="42%" cy="35%" r="65%">
+        <stop offset="0%"   stop-color="#2a3545"/>
+        <stop offset="60%"  stop-color="#141e2c"/>
+        <stop offset="100%" stop-color="#080e18"/>
+      </radialGradient>
+      <!-- Skull highlight -->
+      <radialGradient id="skH" cx="40%" cy="30%" r="55%">
+        <stop offset="0%"  stop-color="rgba(0,212,255,0.18)"/>
+        <stop offset="100%" stop-color="rgba(0,212,255,0)"/>
+      </radialGradient>
+      <!-- Eye iris: glowing blue -->
+      <radialGradient id="eyeIris" cx="35%" cy="32%" r="65%">
+        <stop offset="0%"   stop-color="#88f0ff"/>
+        <stop offset="25%"  stop-color="#1890e8"/>
+        <stop offset="58%"  stop-color="#0540a0"/>
+        <stop offset="100%" stop-color="#010818"/>
+      </radialGradient>
+      <!-- Pupil -->
+      <radialGradient id="pupG" cx="38%" cy="33%" r="62%">
+        <stop offset="0%"  stop-color="#1a2535"/>
+        <stop offset="100%" stop-color="#000306"/>
+      </radialGradient>
+      <!-- Neon glow filter -->
+      <filter id="neonGlow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="4" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <filter id="softGlow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="2.5" result="b"/>
+        <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+      </filter>
+      <!-- Clip pupils inside eye sockets -->
+      <clipPath id="eyeClipL"><ellipse cx="42" cy="66" rx="17" ry="16"/></clipPath>
+      <clipPath id="eyeClipR"><ellipse cx="88" cy="66" rx="17" ry="16"/></clipPath>
+    </defs>
+
+    <!-- ── SKULL OUTER GLOW ── -->
+    <ellipse cx="65" cy="65" rx="52" ry="54"
+             fill="none" stroke="rgba(0,212,255,0.18)" stroke-width="3">
+      <animate attributeName="stroke-opacity" values="0.18;0.05;0.18" dur="3s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- ── SKULL CRANIUM ── -->
+    <ellipse cx="65" cy="58" rx="48" ry="50"
+             fill="url(#skG)" stroke="#00d4ff" stroke-width="1.2"
+             filter="url(#neonGlow)"/>
+    <!-- Highlight shine on forehead -->
+    <ellipse cx="65" cy="58" rx="48" ry="50" fill="url(#skH)"/>
+    <!-- Subtle top shine -->
+    <ellipse cx="50" cy="36" rx="18" ry="10"
+             fill="rgba(0,212,255,0.08)" transform="rotate(-15,50,36)"/>
+
+    <!-- ── JAW / LOWER SKULL ── -->
+    <path d="M28 88 Q28 118 45 126 L85 126 Q102 118 102 88 Z"
+          fill="#0d1522" stroke="#00d4ff" stroke-width="1"/>
+    <!-- Chin center dip -->
+    <path d="M52 126 Q65 132 78 126" fill="none" stroke="#00d4ff" stroke-width="0.8"/>
+
+    <!-- ── TEETH ── -->
+    <rect x="40" y="112" width="10" height="16" rx="2" fill="#0a1828" stroke="#00d4ff" stroke-width="0.8"/>
+    <rect x="53" y="112" width="10" height="18" rx="2" fill="#0a1828" stroke="#00d4ff" stroke-width="0.8"/>
+    <rect x="67" y="112" width="10" height="18" rx="2" fill="#0a1828" stroke="#00d4ff" stroke-width="0.8"/>
+    <rect x="80" y="112" width="10" height="16" rx="2" fill="#0a1828" stroke="#00d4ff" stroke-width="0.8"/>
+    <!-- Tooth gaps -->
+    <line x1="51"  y1="112" x2="51"  y2="128" stroke="#060f1e" stroke-width="2"/>
+    <line x1="64"  y1="112" x2="64"  y2="130" stroke="#060f1e" stroke-width="2"/>
+    <line x1="78"  y1="112" x2="78"  y2="128" stroke="#060f1e" stroke-width="2"/>
+
+    <!-- ── NOSE CAVITY ── -->
+    <path d="M58 90 Q65 82 72 90 L69 100 Q65 104 61 100 Z"
+          fill="#060e1a" stroke="#00d4ff" stroke-width="0.7"/>
+
+    <!-- ── CHEEKBONE LINES (circuit detail) ── -->
+    <path d="M18 75 Q28 80 35 78" fill="none" stroke="rgba(0,212,255,0.35)" stroke-width="0.8"/>
+    <path d="M112 75 Q102 80 95 78" fill="none" stroke="rgba(0,212,255,0.35)" stroke-width="0.8"/>
+    <circle cx="18" cy="75" r="2" fill="rgba(0,212,255,0.4)"/>
+    <circle cx="112" cy="75" r="2" fill="rgba(0,212,255,0.4)"/>
+
+    <!-- ── EYE SOCKET LEFT — dark recess ── -->
+    <ellipse cx="42" cy="66" rx="19" ry="18"
+             fill="#04090f" stroke="#00d4ff" stroke-width="1.2" filter="url(#softGlow)"/>
+    <!-- Blue iris base LEFT -->
+    <ellipse cx="42" cy="66" rx="16" ry="15" fill="url(#eyeIris)" filter="url(#softGlow)"/>
+    <!-- Moving pupil group LEFT -->
+    <g id="eyeL" clip-path="url(#eyeClipL)">
+      <ellipse cx="42" cy="66" rx="10" ry="10"
+               fill="none" stroke="rgba(30,120,230,0.55)" stroke-width="2"/>
+      <ellipse cx="42" cy="66" rx="6" ry="6" fill="url(#pupG)"/>
+      <ellipse cx="39" cy="63" rx="2.5" ry="1.5"
+               fill="rgba(255,255,255,0.6)" transform="rotate(-30,39,63)"/>
+    </g>
+    <!-- Socket rim shine LEFT -->
+    <ellipse cx="36" cy="59" rx="5" ry="3"
+             fill="rgba(255,255,255,0.3)" transform="rotate(-30,36,59)"/>
+    <!-- Animated iris glow LEFT -->
+    <ellipse cx="42" cy="66" rx="16" ry="15"
+             fill="none" stroke="rgba(0,212,255,0.4)" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.4;0.08;0.4" dur="2.5s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- ── EYE SOCKET RIGHT — dark recess ── -->
+    <ellipse cx="88" cy="66" rx="19" ry="18"
+             fill="#04090f" stroke="#00d4ff" stroke-width="1.2" filter="url(#softGlow)"/>
+    <!-- Blue iris base RIGHT -->
+    <ellipse cx="88" cy="66" rx="16" ry="15" fill="url(#eyeIris)" filter="url(#softGlow)"/>
+    <!-- Moving pupil group RIGHT -->
+    <g id="eyeR" clip-path="url(#eyeClipR)">
+      <ellipse cx="88" cy="66" rx="10" ry="10"
+               fill="none" stroke="rgba(30,120,230,0.55)" stroke-width="2"/>
+      <ellipse cx="88" cy="66" rx="6" ry="6" fill="url(#pupG)"/>
+      <ellipse cx="85" cy="63" rx="2.5" ry="1.5"
+               fill="rgba(255,255,255,0.6)" transform="rotate(-30,85,63)"/>
+    </g>
+    <!-- Socket rim shine RIGHT -->
+    <ellipse cx="82" cy="59" rx="5" ry="3"
+             fill="rgba(255,255,255,0.3)" transform="rotate(-30,82,59)"/>
+    <!-- Animated iris glow RIGHT -->
+    <ellipse cx="88" cy="66" rx="16" ry="15"
+             fill="none" stroke="rgba(0,212,255,0.4)" stroke-width="1">
+      <animate attributeName="stroke-opacity" values="0.4;0.08;0.4" dur="2.5s" begin="1.2s" repeatCount="indefinite"/>
+    </ellipse>
+
+    <!-- ── CRACK DETAIL on forehead ── -->
+    <path d="M60 18 L65 30 L62 38" fill="none" stroke="rgba(0,212,255,0.3)" stroke-width="0.8"/>
+    <path d="M65 30 L70 36" fill="none" stroke="rgba(0,212,255,0.2)" stroke-width="0.6"/>
+
+  </svg>
+</div>
+
+<!-- Speech bubble is separate fixed element so float animation doesn't move it -->
+<div id="skullBubble"><span class="sk-dot"></span><span id="skTxt">👀 I see you!</span></div>
+
+<script>
+(function () {
+  const svg   = document.getElementById('skullSVG');
+  const eyeL  = document.getElementById('eyeL');
+  const eyeR  = document.getElementById('eyeR');
+  const bub   = document.getElementById('skullBubble');
+  const skTxt = document.getElementById('skTxt');
+
+  // Eye center positions in SVG coordinates
+  const EYE_L = { x: 42, y: 66 };
+  const EYE_R = { x: 88, y: 66 };
+  const MAX   = 6; // max pupil travel in SVG units
+
+  // Smooth lerp state for both eyes
+  let lCur = {x:0,y:0}, lTgt = {x:0,y:0};
+  let rCur = {x:0,y:0}, rTgt = {x:0,y:0};
+
+  (function loop() {
+    lCur.x += (lTgt.x - lCur.x) * 0.13;
+    lCur.y += (lTgt.y - lCur.y) * 0.13;
+    rCur.x += (rTgt.x - rCur.x) * 0.13;
+    rCur.y += (rTgt.y - rCur.y) * 0.13;
+    eyeL.style.transform = 'translate('+lCur.x.toFixed(2)+'px,'+lCur.y.toFixed(2)+'px)';
+    eyeR.style.transform = 'translate('+rCur.x.toFixed(2)+'px,'+rCur.y.toFixed(2)+'px)';
+    requestAnimationFrame(loop);
+  })();
+
+  const msgs = [
+    '👀 I see you!','🎥 Tracking...','💀 Found you!',
+    '🔍 Target locked!','⚡ Scanning...','🛡️ Watching...',
+    "🕵️ Can't hide!",'📡 Signal locked!','💀 Always watching...'
+  ];
+  let last='', bubT;
+  function showBub() {
+    clearTimeout(bubT);
+    let m; do { m=msgs[Math.floor(Math.random()*msgs.length)]; } while(m===last);
+    last=m; skTxt.textContent=m;
+    bub.classList.add('show');
+    bubT=setTimeout(()=>bub.classList.remove('show'), 2200);
+  }
+
+  document.addEventListener('mousemove', function(e) {
+    const r = svg.getBoundingClientRect();
+    const sx = 130 / r.width;
+    const sy = 150 / r.height;
+
+    function calcOffset(eye) {
+      const ex = r.left + eye.x / sx;
+      const ey = r.top  + eye.y / sy;
+      const dx = e.clientX - ex;
+      const dy = e.clientY - ey;
+      const d  = Math.sqrt(dx*dx + dy*dy);
+      return d > 1 ? { x:(dx/d)*MAX, y:(dy/d)*MAX } : {x:0,y:0};
+    }
+
+    const ol = calcOffset(EYE_L);
+    const or2 = calcOffset(EYE_R);
+    lTgt.x = ol.x; lTgt.y = ol.y;
+    rTgt.x = or2.x; rTgt.y = or2.y;
+    showBub();
+  });
+})();
+</script>
+</body>
+</html>

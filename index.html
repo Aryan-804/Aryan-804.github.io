@@ -668,6 +668,89 @@
   }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+
+  /* ── DOCUMENT CARDS ── */
+  .doc-card {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .doc-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--glow-b);
+    border-color: rgba(0,212,255,0.4);
+  }
+  .doc-icon {
+    font-size: 2.5rem;
+    padding: 28px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+  }
+  .doc-body {
+    padding: 20px 22px;
+    flex: 1;
+  }
+  .doc-type {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.62rem;
+    letter-spacing: 3px;
+    color: var(--green);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .doc-title {
+    font-family: 'Orbitron', monospace;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+  .doc-desc {
+    font-size: 0.82rem;
+    color: var(--dim);
+    line-height: 1.6;
+  }
+  .doc-footer {
+    padding: 14px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .doc-btn {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--blue);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: text-shadow 0.3s;
+  }
+  .doc-btn:hover { text-shadow: var(--glow-b); }
+
+
+  /* ── DOCUMENT CARDS ── */
+  .doc-card {
+    background: var(--dark);
+    border: 1px solid var(--border);
+    display: flex; flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .doc-card:hover { transform: translateY(-5px); box-shadow: var(--glow-b); border-color: rgba(0,212,255,0.4); }
+  .doc-icon { font-size: 2.5rem; padding: 28px; background: var(--panel); border-bottom: 1px solid var(--border); text-align: center; }
+  .doc-body { padding: 20px 22px; flex: 1; }
+  .doc-type { font-family: 'Share Tech Mono', monospace; font-size: 0.62rem; letter-spacing: 3px; color: var(--green); text-transform: uppercase; margin-bottom: 8px; }
+  .doc-title { font-family: 'Orbitron', monospace; font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
+  .doc-desc { font-size: 0.82rem; color: var(--dim); line-height: 1.6; }
+  .doc-footer { padding: 14px 22px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+  .doc-btn { font-family: 'Share Tech Mono', monospace; font-size: 0.65rem; letter-spacing: 2px; color: var(--blue); text-decoration: none; text-transform: uppercase; transition: text-shadow 0.3s; }
+  .doc-btn:hover { text-shadow: var(--glow-b); }
+
   /* ── MOBILE ── */
   @media (max-width: 768px) {
     nav { padding: 16px 20px; }
@@ -696,8 +779,8 @@
     <li><a href="#about">About</a></li>
     <li><a href="#expertise">Expertise</a></li>
     <li><a href="#projects">Projects</a></li>
-    <li><a href="#creator">Creator</a></li>
     <li><a href="#skills">Skills</a></li>
+    <li><a href="#documents">Documents</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -713,7 +796,7 @@
       <span class="line2">&amp; Digital Architect</span>
     </h1>
     <p class="hero-sub">
-      BS Cybersecurity student from <strong>Tank, KPK</strong> — bridging the gap between <strong>ethical hacking</strong>, web development, and AI-powered digital experiences. Building secure systems from the ground up.
+      BS Cybersecurity student from <strong>Tank, KPK</strong> — focused on <strong>Ethical Hacking</strong>, Video Editing, and Vibe Coding. Building skills to protect the digital world and create powerful digital content.
     </p>
     <div class="hero-btns">
       <a href="#projects" class="btn-primary">View Projects</a>
@@ -750,10 +833,10 @@
         </div>
       </div>
       <p class="card-desc" style="margin-bottom:20px;">
-        I'm a passionate cybersecurity student from Tank, KPK, currently pursuing my <strong style="color:var(--blue);">BS in Cybersecurity</strong>. My journey started with a curiosity for how systems work — and how they break. I combine ethical hacking skills with web development and AI automation to build secure, modern digital solutions.
+        I'm a cybersecurity student from Tank, KPK, currently pursuing my <strong style="color:var(--blue);">BS in Cybersecurity</strong>. My focus is on <strong style="color:var(--green);">ethical hacking</strong>, understanding how systems are attacked and how to defend them. Alongside security, I explore <strong style="color:var(--blue);">Video Editing</strong>, <strong style="color:var(--green);">Vibe Coding</strong>, and the basics of <strong style="color:var(--blue);">Python</strong> programming.
       </p>
       <p class="card-desc">
-        From the classrooms of <strong style="color:var(--green);">Tank</strong> to advanced cybersecurity labs, I am committed to protecting the digital world — one system at a time.
+        From the classrooms of <strong style="color:var(--green);">Tank, KPK</strong> to hands-on cybersecurity practice — I am committed to growing every day and making an impact in the digital security world.
       </p>
     </div>
 
@@ -1013,30 +1096,223 @@
     <div class="section-line"></div>
   </div>
   <div class="skills-cloud reveal">
-    <span class="skill-pill featured">HTML5</span>
-    <span class="skill-pill featured">CSS3</span>
-    <span class="skill-pill featured g">Python</span>
-    <span class="skill-pill">JavaScript</span>
-    <span class="skill-pill featured">Kali Linux</span>
-    <span class="skill-pill featured g">Nmap</span>
-    <span class="skill-pill">Tor Network</span>
+    <span class="skill-pill featured">Cybersecurity</span>
+    <span class="skill-pill featured g">Ethical Hacking</span>
     <span class="skill-pill featured">Penetration Testing</span>
-    <span class="skill-pill">Smali / APK Modding</span>
-    <span class="skill-pill featured g">Machine Learning</span>
-    <span class="skill-pill">Microsoft VBA</span>
-    <span class="skill-pill featured">Excel Automation</span>
-    <span class="skill-pill">Network Auditing</span>
-    <span class="skill-pill">Bash Scripting</span>
-    <span class="skill-pill featured g">UI/UX Design</span>
-    <span class="skill-pill">Git / GitHub</span>
-    <span class="skill-pill">Wireshark</span>
-    <span class="skill-pill featured">SEO Strategy</span>
-    <span class="skill-pill">Content Creation</span>
-    <span class="skill-pill">Video Editing</span>
-    <span class="skill-pill featured g">Data Analysis</span>
-    <span class="skill-pill">Metasploit</span>
-    <span class="skill-pill">Burp Suite</span>
-    <span class="skill-pill featured">Responsive Design</span>
+    <span class="skill-pill featured g">Kali Linux</span>
+    <span class="skill-pill featured">Network Auditing</span>
+    <span class="skill-pill">Nmap</span>
+    <span class="skill-pill featured g">Basic Python</span>
+    <span class="skill-pill featured">Video Editing</span>
+    <span class="skill-pill featured g">Vibe Coding</span>
+  </div>
+</section>
+
+<!-- DOCUMENTS & ACTIVITIES -->
+<section id="documents" style="padding:100px 48px; background:var(--panel);">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 06</span>
+    <h2 class="section-title">Documents & <span>Activities</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;">
+
+    <!-- ── ADD YOUR DOCUMENTS BELOW ── -->
+    <!-- Copy one .doc-card block to add a new document -->
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+
+      <!-- DOCUMENT CARD 1 — edit this -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-type">Certificate</div>
+          <div class="doc-title">Your Certificate Name</div>
+          <p class="doc-desc">Brief description of this certificate or activity — what it is and when you received it.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- DOCUMENT CARD 2 — edit this -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">🏆</div>
+        <div class="doc-body">
+          <div class="doc-type">Achievement</div>
+          <div class="doc-title">Your Achievement Name</div>
+          <p class="doc-desc">Brief description of this achievement — what you accomplished and where.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- DOCUMENT CARD 3 — edit this -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">🎓</div>
+        <div class="doc-body">
+          <div class="doc-type">Education</div>
+          <div class="doc-title">Your Document Name</div>
+          <p class="doc-desc">Brief description — degree, transcript, or any educational document.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- ── TO ADD MORE: copy the block above and paste here ── -->
+
+    </div>
+
+    <!-- HOW TO ADD A DOCUMENT -->
+    <div style="margin-top:40px;padding:20px 28px;border:1px dashed rgba(0,212,255,0.2);border-radius:4px;background:rgba(0,212,255,0.03);">
+      <p style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--dim);line-height:1.8;">
+        <span style="color:var(--green);">// HOW TO ADD YOUR DOCUMENT:</span><br>
+        1. Upload your PDF/image to the same folder as index.html<br>
+        2. Copy any doc-card block above<br>
+        3. Change the icon emoji, title, description, and year<br>
+        4. Set href="#" to href="your-file.pdf" to link it
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOCUMENTS & ACTIVITIES -->
+<section id="documents" style="padding:100px 48px; background:var(--panel);">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 06</span>
+    <h2 class="section-title">Documents & <span>Activities</span></h2>
+    <div class="section-line"></div>
+  </div>
+
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+
+      <!-- CARD 1 — Edit title, description, year, and href -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-type">Certificate</div>
+          <div class="doc-title">Your Certificate Name</div>
+          <p class="doc-desc">Brief description of this certificate or activity.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- CARD 2 — Edit title, description, year, and href -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">🏆</div>
+        <div class="doc-body">
+          <div class="doc-type">Achievement</div>
+          <div class="doc-title">Your Achievement Name</div>
+          <p class="doc-desc">Brief description of what you accomplished and where.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- CARD 3 — Edit title, description, year, and href -->
+      <div class="doc-card reveal">
+        <div class="doc-icon">🎓</div>
+        <div class="doc-body">
+          <div class="doc-type">Education</div>
+          <div class="doc-title">Your Document Name</div>
+          <p class="doc-desc">Degree, transcript, or any educational document.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <!-- TO ADD MORE: copy any card block above and paste here -->
+
+    </div>
+
+    <!-- INSTRUCTIONS BOX -->
+    <div style="margin-top:40px;padding:20px 28px;border:1px dashed rgba(0,212,255,0.2);background:rgba(0,212,255,0.03);">
+      <p style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--dim);line-height:1.9;margin:0;">
+        <span style="color:var(--green);">// HOW TO ADD YOUR DOCUMENT:</span><br>
+        1. Upload your PDF file to the same folder as index.html<br>
+        2. Copy any card block above and paste inside the grid div<br>
+        3. Change the emoji icon, title, description, and year<br>
+        4. Set <span style="color:var(--blue);">href="#"</span> to <span style="color:var(--blue);">href="your-file.pdf"</span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- DOCUMENTS & ACTIVITIES -->
+<section id="documents" style="padding:100px 48px; background:var(--panel);">
+  <div class="section-header reveal">
+    <span class="section-tag">// Module 06</span>
+    <h2 class="section-title">Documents &amp; <span>Activities</span></h2>
+    <div class="section-line"></div>
+  </div>
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:24px;">
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">📄</div>
+        <div class="doc-body">
+          <div class="doc-type">Certificate</div>
+          <div class="doc-title">Your Certificate Name</div>
+          <p class="doc-desc">Brief description of this certificate or activity.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">🏆</div>
+        <div class="doc-body">
+          <div class="doc-type">Achievement</div>
+          <div class="doc-title">Your Achievement Name</div>
+          <p class="doc-desc">Brief description of what you accomplished and where.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+      <div class="doc-card reveal">
+        <div class="doc-icon">🎓</div>
+        <div class="doc-body">
+          <div class="doc-type">Education</div>
+          <div class="doc-title">Your Document Name</div>
+          <p class="doc-desc">Degree, transcript, or any educational document.</p>
+        </div>
+        <div class="doc-footer">
+          <a href="#" class="doc-btn">View Document →</a>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:0.62rem;color:var(--dim);">2025</span>
+        </div>
+      </div>
+
+    </div>
+    <div style="margin-top:40px;padding:20px 28px;border:1px dashed rgba(0,212,255,0.2);background:rgba(0,212,255,0.03);">
+      <p style="font-family:'Share Tech Mono',monospace;font-size:0.7rem;color:var(--dim);line-height:1.9;margin:0;">
+        <span style="color:var(--green);">// HOW TO ADD YOUR DOCUMENT:</span><br>
+        1. Upload your PDF to the same folder as index.html<br>
+        2. Copy any card block above and paste inside the grid<br>
+        3. Change emoji, title, description and year<br>
+        4. Change href="#" to href="your-file.pdf"
+      </p>
+    </div>
   </div>
 </section>
 
@@ -1071,20 +1347,24 @@
     </div>
 
     <div class="social-row">
-      <a href="https://github.com/Aryan-804" target="_blank" class="social-btn" title="GitHub"><img src="github.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="#" class="social-btn" title="LinkedIn"><img src="linkedin.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="#" class="social-btn" title="Twitter/X"><img src="twitter.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="#" class="social-btn" title="YouTube"><img src="youtube.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="#" class="social-btn" title="TikTok"><img src="tiktok.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="https://www.instagram.com/m.aryan_804?igsh=MjJrejBrdnljN3Yw" target="_blank" class="social-btn" title="Instagram"><img src="instagram.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
-      <a href="#" class="social-btn" title="Telegram"><img src="telegram.png" alt="Muhammad Aryan"
-               style="width:100%;height:100%;object-fit:cover;object-position:center top;"></a>
+      <a href="https://aryan-804.github.io/" target="_blank" class="social-btn" title="GitHub">
+        <img src="github.png" alt="GitHub" style="width:100%;height:100%;object-fit:contain;">
+      </a>
+      <a href="#" class="social-btn" title="LinkedIn">
+        <img src="linkedin.png" alt="LinkedIn" style="width:100%;height:100%;object-fit:contain;">
+      </a>
+      <a href="#" class="social-btn" title="Facebook">
+        <img src="facebook.png" alt="Facebook" style="width:100%;height:100%;object-fit:contain;">
+      </a>
+      <a href="https://www.instagram.com/m.aryan_804?igsh=MjJrejBrdnljN3Yw" target="_blank" class="social-btn" title="Instagram">
+        <img src="instagram.png" alt="Instagram" style="width:100%;height:100%;object-fit:contain;">
+      </a>
+      <a href="#" class="social-btn" title="WhatsApp" id="whatsapp-btn">
+        <svg viewBox="0 0 72 72" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+          <rect width="72" height="72" rx="16" fill="#25D366"/>
+          <path d="M36 12C22.7 12 12 22.7 12 36c0 4.2 1.1 8.2 3.1 11.7L12 60l12.7-3.1C28 58.8 31.9 60 36 60c13.3 0 24-10.7 24-24S49.3 12 36 12zm0 44c-3.7 0-7.3-1-10.4-2.8l-.7-.4-7.5 1.8 1.9-7.3-.5-.8C17 43.3 16 39.7 16 36c0-11 9-20 20-20s20 9 20 20-9 20-20 20zm11-15.1c-.6-.3-3.5-1.7-4-1.9-.6-.2-1-.3-1.4.3-.4.6-1.6 1.9-1.9 2.3-.4.4-.7.4-1.3.1-.6-.3-2.6-1-5-3.1-1.8-1.6-3-3.6-3.4-4.2-.4-.6 0-.9.3-1.2.3-.3.6-.7.9-1.1.3-.4.4-.6.6-1 .2-.4.1-.8-.1-1.1-.2-.3-1.4-3.4-1.9-4.6-.5-1.2-1-1-1.4-1h-1.2c-.4 0-1 .1-1.6.8-.6.6-2.2 2.1-2.2 5.2s2.2 6 2.6 6.4c.4.4 4.3 6.6 10.5 9.2 1.5.6 2.6.9 3.5 1.2 1.5.5 2.8.4 3.9.2 1.2-.2 3.5-1.4 4-2.8.5-1.4.5-2.5.3-2.8-.1-.3-.5-.4-1.1-.7z" fill="white"/>
+        </svg>
+      </a>
     </div>
   </div>
 </section>
